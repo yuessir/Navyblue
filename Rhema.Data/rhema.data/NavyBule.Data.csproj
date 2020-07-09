@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <AssemblyName>NavyBule.Data</AssemblyName>
+    <RootNamespace>NavyBule.Data</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Rhema.Core\rhema.core\NavyBule.Core.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="ERPConnect45">
+      <HintPath>Libs\ERPConnect45.dll</HintPath>
+      <Private></Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Update="Libs\ERPConnect45.dll">
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>
