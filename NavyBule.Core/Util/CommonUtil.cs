@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using NavyBule.Core.Attribute;
-using NavyBule.Core.Domain;
+using Rhema.Core.Attribute;
+using Rhema.Core.Domain;
 
 
-namespace NavyBule.Core.Util
+namespace Rhema.Core.Util
 {
     public class CommonUtilExt
     {
@@ -176,7 +176,7 @@ namespace NavyBule.Core.Util
 
         public static TableEntity CreateTableEntity(Type t)
         {
-            var table = t.GetCustomAttributes(false).FirstOrDefault(f => f is Attribute.TableAttribute) as NavyBule.Core.Attribute.TableAttribute;
+            var table = t.GetCustomAttributes(false).FirstOrDefault(f => f is Attribute.TableAttribute) as Rhema.Core.Attribute.TableAttribute;
             if (table == null)
             {
                 throw new Exception("Class " + t.Name + " is not labeled [TableAttribute], please label it first");
@@ -203,7 +203,7 @@ namespace NavyBule.Core.Util
                     {
                         string Name = item.Name;
                         model.AllFieldPropertiesList.Add(Name); //所有列(使用property name)
-                        var column = item.GetCustomAttributes(false).FirstOrDefault(f => f is NavyBule.Core.Attribute.ColumnAttribute) as NavyBule.Core.Attribute.ColumnAttribute;
+                        var column = item.GetCustomAttributes(false).FirstOrDefault(f => f is Rhema.Core.Attribute.ColumnAttribute) as Rhema.Core.Attribute.ColumnAttribute;
                         if (column != null)
                             Name = column.Name;
                         if (!Name.ToLower().Equals(model.KeyName.ToLower()))
@@ -465,7 +465,7 @@ namespace NavyBule.Core.Util
             }
 
             table.DeleteAllSql = string.Format("DELETE FROM \"{0}\" ", table.TableName);
-            table.GetAllSql = string.Format("SELECT {0} FROM \"{1}\" ", Fields, table.TableName);
+            table.GetAllSql = string.Format("SELECT {0} FROM {1} ", Fields, table.TableName);
         }
 
         public static void CheckTableKey(TableEntity table)

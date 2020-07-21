@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using ERPConnect;
 
-namespace NavyBule.Data
+namespace Rhema.Data
 {
     /// <summary>
     /// Interface IDbSession

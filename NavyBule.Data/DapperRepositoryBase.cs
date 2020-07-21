@@ -9,11 +9,11 @@ using System.Threading.Tasks;
 using Dapper;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using NavyBule.Core.Domain;
-using NavyBule.Core.Infrastructure;
-using NavyBule.Data.Extensions;
+using Rhema.Core.Domain;
+using Rhema.Core.Infrastructure;
+using Rhema.Data.Extensions;
 
-namespace NavyBule.Data
+namespace Rhema.Data
 {
     /// <summary>
     /// Class DapperRepositoryBase.
@@ -523,6 +523,112 @@ namespace NavyBule.Data
             return result.FirstOrDefault();
         }
 
+        /// <summary>
+        /// get by where as an asynchronous operation.
+        /// </summary>
+        /// <typeparam name="TEntity">The type of the t entity.</typeparam>
+        /// <param name="whereClause">The where clause, optional.</param>
+        /// <param name="param">The parameter.</param>
+        /// <param name="returnFields">The return fields.</param>
+        /// <param name="orderBy">The order by.</param>
+        /// <param name="tran">The tran.</param>
+        /// <param name="commandTimeout">The command timeout.</param>
+        /// <param name="useTransaction">if set to <c>true</c> [use transaction].</param>
+        /// <returns>Task&lt;IEnumerable&lt;TEntity&gt;&gt;.</returns>
+        public virtual async Task<IEnumerable<TEntity>> GetByWhereAsync<TEntity>(string whereClause, object param = null, string returnFields = null, string orderBy = null, IDbTransaction tran = null, int? commandTimeout = null
+            , bool useTransaction = false)
+        {
+            SqlMapperSetTypeMap<TEntity>();
+      
+            IDbSession session = DbSession;
+             try
+            {
+                IEnumerable<TEntity> results;
+                if (useTransaction)
+                {
+                    session.BeginTrans();
+
+                    results = await session.Connection.GetByWhereAsync<TEntity>(SqlBuilder, whereClause, param, returnFields, orderBy, session.Transaction, commandTimeout);
+
+                    session.Commit();
+                }
+                else
+                {
+                    results = await session.Connection.GetByWhereAsync<TEntity>(SqlBuilder, whereClause, param, returnFields, orderBy, null, commandTimeout);
+
+                }
+                return results.ToList();
+
+            }
+            catch (Exception ex)
+            {
+                // log
+                _logger.LogError(ex.Message);
+
+                if (useTransaction)
+                {
+                    session.Rollback();
+                }
+
+                return null;
+            }
+            finally
+            {
+                session.Dispose();
+            }
+        }
+        /// <summary>
+        /// get all as an asynchronous operation.
+        /// </summary>
+        /// <typeparam name="TEntity">The type of the t entity.</typeparam>
+        /// <param name="returnFields">The return fields.</param>
+        /// <param name="orderBy">The order by.</param>
+        /// <param name="tran">The tran.</param>
+        /// <param name="commandTimeout">The command timeout.</param>
+        /// <param name="useTransaction">if set to <c>true</c> [use transaction].</param>
+        /// <returns>Task&lt;IEnumerable&lt;TEntity&gt;&gt;.</returns>
+        public virtual async Task<IEnumerable<TEntity>> GetAllAsync<TEntity>(string returnFields = null, string orderBy = null, IDbTransaction tran = null, int? commandTimeout = null
+            , bool useTransaction = false)
+        {
+            SqlMapperSetTypeMap<TEntity>();
+
+            IDbSession session = DbSession;
+            try
+            {
+                IEnumerable<TEntity> results;
+                if (useTransaction)
+                {
+                    session.BeginTrans();
+
+                    results = await session.Connection.GetAllAsync<TEntity>(SqlBuilder, returnFields, orderBy, session.Transaction, commandTimeout);
+
+                    session.Commit();
+                }
+                else
+                {
+                    results = await session.Connection.GetAllAsync<TEntity>(SqlBuilder, returnFields, orderBy, null, commandTimeout);
+
+                }
+                return results.ToList();
+
+            }
+            catch (Exception ex)
+            {
+                // log
+                _logger.LogError(ex.Message);
+
+                if (useTransaction)
+                {
+                    session.Rollback();
+                }
+
+                return null;
+            }
+            finally
+            {
+                session.Dispose();
+            }
+        }
         /// <summary>
         /// Gets the list.
         /// </summary>

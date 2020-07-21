@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 
-namespace NavyBule.Core
+namespace Rhema.Core
 {
     /// <summary>
     /// Class Result.

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NavyBule.Core.Infrastructure
+namespace Rhema.Core.Infrastructure
 {
     public class Singleton<T> : BaseSingleton
     {

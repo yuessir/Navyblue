@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace NavyBule.Core.Infrastructure
+namespace Rhema.Core.Infrastructure
 {
     public interface IEngine
     {

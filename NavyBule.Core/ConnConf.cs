@@ -1,4 +1,4 @@
-﻿namespace NavyBule.Core
+﻿namespace Rhema.Core
 {
     /// <summary>
     /// Class ConnConf.

@@ -339,7 +339,5 @@ ASALocalRun/
 # BeatPulse healthcheck temp database
 healthchecksdb
 
-# Rma upload folder
-Upload/
-MessageUpload/
-UPLOAD_CUST/
+# liscence dlls
+Libs/

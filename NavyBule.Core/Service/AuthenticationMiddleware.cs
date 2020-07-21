@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace NavyBule.Core.Service
+namespace Rhema.Core.Service
 {
     /// <summary>
     /// Represents middleware that enables authentication

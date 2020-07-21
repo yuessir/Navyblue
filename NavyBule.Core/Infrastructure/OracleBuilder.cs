@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using NavyBule.Core.Cache;
-using NavyBule.Core.Domain;
-using NavyBule.Core.Util;
+using Rhema.Core.Cache;
+using Rhema.Core.Domain;
+using Rhema.Core.Util;
 
-namespace NavyBule.Core.Infrastructure
+namespace Rhema.Core.Infrastructure
 {
     public class OracleBuilder : ISqlBuilder
     {
@@ -153,7 +153,7 @@ namespace NavyBule.Core.Infrastructure
             if (string.IsNullOrEmpty(returnFields))
                 return table.GetAllSql + orderBy;
             else
-                return string.Format("SELECT {0} FROM \"{1}\" {2}", returnFields, table.TableName, orderBy);
+                return string.Format("SELECT {0} FROM {1} {2}", returnFields, table.TableName, orderBy);
         }
 
         public string GetByIdSql<T>(string returnFields)
@@ -189,7 +189,7 @@ namespace NavyBule.Core.Infrastructure
             var table = OracleCache.GetTableEntity<T>();
             if (string.IsNullOrEmpty(returnFields))
                 returnFields = table.AllFields;
-            return string.Format("SELECT {0} FROM \"{1}\" {2} {3}", returnFields, table.TableName, where, orderBy);
+            return string.Format("SELECT {0} FROM {1} {2} {3}", returnFields, table.TableName, where, orderBy);
         }
 
         public string GetByWhereFirstSql<T>(string where, string returnFields)

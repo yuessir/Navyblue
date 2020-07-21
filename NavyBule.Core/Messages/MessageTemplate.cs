@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NavyBule.Core.Messages
+namespace Rhema.Core.Messages
 {
     /// <summary>
     /// Represents a message template

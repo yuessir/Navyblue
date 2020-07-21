@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NavyBule.Core.Domain
+namespace Rhema.Core.Domain
 {
 
     /// <summary>

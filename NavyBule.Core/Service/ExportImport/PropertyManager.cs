@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using OfficeOpenXml;
 using OfficeOpenXml.Style;
 
-namespace NavyBule.Core.Service.ExportImport
+namespace Rhema.Core.Service.ExportImport
 {
     /// <summary>
     /// Class for working with PropertyByName object list

@@ -1,6 +1,6 @@
-﻿using NavyBule.Core.Domain;
+﻿using Rhema.Core.Domain;
 
-namespace NavyBule.Core.Events
+namespace Rhema.Core.Events
 {
     /// <summary>
     /// A container for passing entities that have been deleted. This is not used for entities that are deleted logically via a bit column.

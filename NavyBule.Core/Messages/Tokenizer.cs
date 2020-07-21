@@ -5,7 +5,7 @@ using System.Linq.Dynamic;
 using System.Net;
 using System.Text.RegularExpressions;
 
-namespace NavyBule.Core.Messages
+namespace Rhema.Core.Messages
 {
     /// <summary>
     /// Tokenizer

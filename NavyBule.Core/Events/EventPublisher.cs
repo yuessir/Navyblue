@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Linq;
 using Microsoft.Extensions.Logging;
-using NavyBule.Core.Infrastructure;
+using Rhema.Core.Infrastructure;
 
-namespace NavyBule.Core.Events
+namespace Rhema.Core.Events
 {
     /// <summary>
     /// Represents the event publisher implementation

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NavyBule.Core.Attribute
+namespace Rhema.Core.Attribute
 {
     /// <summary>
     /// TableName：表名称，KeyName：主键名称，IsIdentity：是否自增

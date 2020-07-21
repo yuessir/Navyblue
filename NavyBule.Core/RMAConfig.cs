@@ -1,7 +1,7 @@
 ﻿
-using NavyBule.Core.Messages;
+using Rhema.Core.Messages;
 
-namespace NavyBule.Core
+namespace Rhema.Core
 {
     public class RMAConfig
     {

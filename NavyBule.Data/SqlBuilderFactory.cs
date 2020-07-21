@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
-using NavyBule.Core.Infrastructure;
+using Rhema.Core.Infrastructure;
 
-namespace NavyBule.Data
+namespace Rhema.Data
 {
     internal class SqlBuilderFactory
     {

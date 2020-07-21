@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using NavyBule.Core.Infrastructure;
+using Rhema.Core.Infrastructure;
 
-namespace NavyBule.Core.Util
+namespace Rhema.Core.Util
 {
     public static class CommonHelper
     {

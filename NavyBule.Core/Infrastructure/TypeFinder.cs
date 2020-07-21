@@ -4,9 +4,9 @@ using System.Diagnostics;
 using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
-using NavyBule.Core.Util;
+using Rhema.Core.Util;
 
-namespace NavyBule.Core.Infrastructure
+namespace Rhema.Core.Infrastructure
 {
     public class TypeFinder : ITypeFinder
     {

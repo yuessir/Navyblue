@@ -4,10 +4,10 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using Dapper;
-using NavyBule.Core.Infrastructure;
-using NavyBule.Core.Util;
+using Rhema.Core.Infrastructure;
+using Rhema.Core.Util;
 
-namespace NavyBule.Data.Extensions
+namespace Rhema.Data.Extensions
 {
     public static partial class DapperExtension
     {
@@ -45,6 +45,14 @@ namespace NavyBule.Data.Extensions
         public static async Task<int> DeleteAsync<T>(this IDbConnection conn, ISqlBuilder builder, object id, IDbTransaction tran = null, int? commandTimeout = null)
         {
             return await conn.ExecuteAsync(builder.GetDeleteByIdSql<T>(), new { id = id }, tran, commandTimeout);
+        }
+        public static async Task<IEnumerable<T>> GetByWhereAsync<T>(this IDbConnection conn, ISqlBuilder builder, string where, object param = null, string returnFields = null, string orderBy = null, IDbTransaction tran = null, int? commandTimeout = null)
+        {
+            return await conn.QueryAsync<T>(builder.GetByWhereSql<T>(where, returnFields, orderBy), param, tran, commandTimeout);
+        }
+        public static async Task<IEnumerable<T>> GetAllAsync<T>(this IDbConnection conn, ISqlBuilder builder, string returnFields = null, string orderBy = null, IDbTransaction tran = null, int? commandTimeout = null)
+        {
+            return await conn.QueryAsync<T>(builder.GetAllSql<T>(returnFields, orderBy), null, tran, commandTimeout);
         }
     }
 }

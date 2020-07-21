@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace NavyBule.Core.Service
+namespace Rhema.Core.Service
 {
     public interface IDateTimeHelper
     {

@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Concurrent;
+using System.Collections.Generic;
 using System.Reflection;
-using NavyBule.Core.Domain;
-using NavyBule.Core.Util;
+using Rhema.Core.Domain;
+using Rhema.Core.Util;
 
-namespace NavyBule.Core.Cache
+namespace Rhema.Core.Cache
 {
     internal class OracleCache
     {
@@ -40,7 +41,11 @@ namespace NavyBule.Core.Cache
         /// Cache
         /// </summary>
         private static readonly ConcurrentDictionary<RuntimeTypeHandle, ArrayList> propertyDict = new ConcurrentDictionary<RuntimeTypeHandle, ArrayList>();
+
+        private static readonly ConcurrentDictionary<RuntimeTypeHandle, List<PropertyInfo>> propertyInfoDict = new ConcurrentDictionary<RuntimeTypeHandle, List<PropertyInfo>>();
+
         private static readonly object _locker = new object();
+        private static readonly object _locker2 = new object();
         public static ArrayList GetDtoProperties<T>()
         {
             Type t = typeof(T);
@@ -59,6 +64,24 @@ namespace NavyBule.Core.Cache
 
             return propertyDict[typeHandle];
         }
+        public static List<PropertyInfo> GetPropertyInfoList<T>()
+        {
+            Type t = typeof(T);
+            RuntimeTypeHandle typeHandle = t.TypeHandle;
+            if (!propertyInfoDict.Keys.Contains(typeHandle))
+            {
+                lock (_locker2)
+                {
+                    if (!propertyInfoDict.Keys.Contains(typeHandle))
+                    {
+                        var table = GetPropertyInfoList(t);
+                        propertyInfoDict[typeHandle] = table;
+                    }
+                }
+            }
+
+            return propertyInfoDict[typeHandle];
+        }
         /// <summary>
         /// Gets the property information.
         /// </summary>
@@ -71,6 +94,19 @@ namespace NavyBule.Core.Cache
             foreach (PropertyInfo objProperty in objType.GetProperties())
             {
                 objProperties.Add(objProperty.Name);
+            }
+
+            return objProperties;
+
+        }
+
+        private static List<PropertyInfo> GetPropertyInfoList(Type objType)
+        {
+
+            var objProperties = new List<PropertyInfo>();
+            foreach (PropertyInfo objProperty in objType.GetProperties())
+            {
+                objProperties.Add(objProperty);
             }
 
             return objProperties;

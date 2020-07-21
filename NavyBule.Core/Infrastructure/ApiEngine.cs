@@ -8,9 +8,9 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using NavyBule.Core.Infrastructure.DependencyManagement;
+using Rhema.Core.Infrastructure.DependencyManagement;
 
-namespace NavyBule.Core.Infrastructure
+namespace Rhema.Core.Infrastructure
 {
     public class ApiEngine : IEngine
     {

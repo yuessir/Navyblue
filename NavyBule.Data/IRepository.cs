@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using NavyBule.Core.Domain;
+using Rhema.Core.Domain;
 
-namespace NavyBule.Data
+namespace Rhema.Data
 {
     public partial interface IRepository<TEntity> where TEntity : BaseEntity
     {

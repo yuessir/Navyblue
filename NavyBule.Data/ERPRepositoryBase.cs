@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 using ERPConnect;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using NavyBule.Core.Domain;
+using Rhema.Core.Domain;
 
-namespace NavyBule.Data
+namespace Rhema.Data
 {
     /// <summary>
     /// Class ERPRepositoryBase.

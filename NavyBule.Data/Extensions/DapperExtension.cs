@@ -4,9 +4,9 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using Dapper;
-using NavyBule.Core.Infrastructure;
+using Rhema.Core.Infrastructure;
 
-namespace NavyBule.Data.Extensions
+namespace Rhema.Data.Extensions
 {
     public static partial  class DapperExtension
     {
@@ -37,6 +37,14 @@ namespace NavyBule.Data.Extensions
             }
 
             return effectRow;
+        }
+        public static IEnumerable<T> GetByWhere<T>(this IDbConnection conn, ISqlBuilder builder, string where, object param = null, string returnFields = null, string orderBy = null, IDbTransaction tran = null, int? commandTimeout = null)
+        {
+            return conn.Query<T>(builder.GetByWhereSql<T>(where, returnFields, orderBy), param, tran, true, commandTimeout);
+        }
+        public static IEnumerable<T> GetAll<T>(this IDbConnection conn, ISqlBuilder builder, string returnFields = null, string orderBy = null, IDbTransaction tran = null, int? commandTimeout = null)
+        {
+            return conn.Query<T>(builder.GetAllSql<T>(returnFields, orderBy), null, tran, true, commandTimeout);
         }
     }
 }

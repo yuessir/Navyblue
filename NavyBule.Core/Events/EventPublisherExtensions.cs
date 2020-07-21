@@ -1,6 +1,6 @@
-﻿using NavyBule.Core.Domain;
+﻿using Rhema.Core.Domain;
 
-namespace NavyBule.Core.Events
+namespace Rhema.Core.Events
 {
     /// <summary>
     /// Event publisher extensions

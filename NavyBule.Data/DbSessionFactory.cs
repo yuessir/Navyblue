@@ -7,9 +7,9 @@ using System.Text;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using Oracle.ManagedDataAccess.Client;
-using NavyBule.Core.Domain;
+using Rhema.Core.Domain;
 
-namespace NavyBule.Data
+namespace Rhema.Data
 {
 
 
