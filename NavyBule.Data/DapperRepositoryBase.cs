@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Dapper;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Rhema.Core;
 using Rhema.Core.Domain;
 using Rhema.Core.Infrastructure;
 using Rhema.Data.Extensions;
@@ -46,7 +48,7 @@ namespace Rhema.Data
         /// </summary>
         protected abstract DatabaseType DataType { get; }
 
-        protected ISqlBuilder SqlBuilder => SqlBuilderFactory.GetBuilder(DbSession.Connection);
+        private ISqlBuilder SqlBuilder => SqlBuilderFactory.GetBuilder(DbSession.Connection);
         /// <summary>
         /// Connection key
         /// </summary>
@@ -527,7 +529,7 @@ namespace Rhema.Data
         /// get by where as an asynchronous operation.
         /// </summary>
         /// <typeparam name="TEntity">The type of the t entity.</typeparam>
-        /// <param name="whereClause">The where clause, optional.</param>
+        /// <param name="whereClause">The where clause, optional, eg: age=13 and name='Kevin'.</param>
         /// <param name="param">The parameter.</param>
         /// <param name="returnFields">The return fields.</param>
         /// <param name="orderBy">The order by.</param>
@@ -555,6 +557,107 @@ namespace Rhema.Data
                 else
                 {
                     results = await session.Connection.GetByWhereAsync<TEntity>(SqlBuilder, whereClause, param, returnFields, orderBy, null, commandTimeout);
+
+                }
+                return results.ToList();
+
+            }
+            catch (Exception ex)
+            {
+                // log
+                _logger.LogError(ex.Message);
+
+                if (useTransaction)
+                {
+                    session.Rollback();
+                }
+
+                return null;
+            }
+            finally
+            {
+                session.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Gets the where string asynchronous.  Eg: where age=13 and name='kevin'
+        /// </summary>
+        /// <typeparam name="TEntity">The type of the t entity.</typeparam>
+        /// <param name="conditionParameters">The condition parameters.</param>
+        /// <returns>Task&lt;System.String&gt;.</returns>
+        public virtual  Task<string> GetWhereStringAsync(List<ConditionParameter> conditionParameters)
+        {
+            foreach (var conditionParameter in conditionParameters)
+            {
+                SqlBuilder.Criteria.AddCondition(conditionParameter.FieldName, conditionParameter.Comparison, conditionParameter.Val, conditionParameter.Tag, conditionParameter.ConditionType, conditionParameter.Priority);
+            }
+
+            return Task.FromResult(SqlBuilder.BuildConditions(true));
+        }
+
+        public virtual async Task<IEnumerable<TEntity>> GetByWhereAsync<TEntity>(List<ConditionParameter<TEntity>> conditionParameters, object param = null, string returnFields = null, string orderBy = null, IDbTransaction tran = null, int? commandTimeout = null
+            , bool useTransaction = false)
+        {
+            SqlMapperSetTypeMap<TEntity>();
+            
+            IDbSession session = DbSession;
+            try
+            {
+                IEnumerable<TEntity> results;
+                if (useTransaction)
+                {
+                    session.BeginTrans();
+                     
+                    results = await session.Connection.GetByWhereAsync<TEntity>(SqlBuilder, conditionParameters, param, returnFields, orderBy, session.Transaction, commandTimeout);
+
+                    session.Commit();
+                }
+                else
+                {
+                    results = await session.Connection.GetByWhereAsync<TEntity>(SqlBuilder, conditionParameters, param, returnFields, orderBy, null, commandTimeout);
+
+                }
+                return results.ToList();
+
+            }
+            catch (Exception ex)
+            {
+                // log
+                _logger.LogError(ex.Message);
+
+                if (useTransaction)
+                {
+                    session.Rollback();
+                }
+
+                return null;
+            }
+            finally
+            {
+                session.Dispose();
+            }
+        }
+        public virtual async Task<IEnumerable<TEntity>> GetByWhereAsync<TEntity>(Expression<Func<TEntity, bool>> exp, object param = null, string returnFields = null, string orderBy = null, IDbTransaction tran = null, int? commandTimeout = null
+            , bool useTransaction = false)
+        {
+            SqlMapperSetTypeMap<TEntity>();
+
+            IDbSession session = DbSession;
+            try
+            {
+                IEnumerable<TEntity> results;
+                if (useTransaction)
+                {
+                    session.BeginTrans();
+                    
+                    results = await session.Connection.GetByWhereAsync<TEntity>(SqlBuilder, exp, param, returnFields, orderBy, session.Transaction, commandTimeout);
+
+                    session.Commit();
+                }
+                else
+                {
+                    results = await session.Connection.GetByWhereAsync<TEntity>(SqlBuilder, exp, param, returnFields, orderBy, null, commandTimeout);
 
                 }
                 return results.ToList();

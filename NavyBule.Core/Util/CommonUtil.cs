@@ -36,6 +36,44 @@ namespace Rhema.Core.Util
             }
             return result;
         }
+        public static string Encode(string text)
+        {
+            if (string.IsNullOrEmpty(text))
+                return text;
+
+            return text.Replace("'", "''");
+        }
+        public static string ConvertVal(object val)
+        {
+            string valToUse = "";
+
+            // String
+            if (val == null || (val.GetType() == typeof(string) && string.IsNullOrEmpty((string)val)))
+                return "''";
+
+            if (val.GetType() == typeof(string))
+                valToUse = "'" + Encode((string)val) + "'";
+
+            // Bool
+            else if (val.GetType() == typeof(bool))
+            {
+                bool bval = (bool)val;
+                valToUse = bval ? "1" : "0";
+            }
+
+            // DateTime
+            else if (val.GetType() == typeof(DateTime))
+            {
+                DateTime date = (DateTime)val;
+                valToUse = "'" + date.ToShortDateString() + "'";
+            }
+
+            // Int / Long / float / double
+            else 
+                valToUse = val.ToString();
+
+            return valToUse;
+        }
     }
     internal class CommonUtil
     {

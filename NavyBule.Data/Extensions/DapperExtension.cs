@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Dapper;
 using Rhema.Core.Infrastructure;
@@ -42,6 +43,7 @@ namespace Rhema.Data.Extensions
         {
             return conn.Query<T>(builder.GetByWhereSql<T>(where, returnFields, orderBy), param, tran, true, commandTimeout);
         }
+
         public static IEnumerable<T> GetAll<T>(this IDbConnection conn, ISqlBuilder builder, string returnFields = null, string orderBy = null, IDbTransaction tran = null, int? commandTimeout = null)
         {
             return conn.Query<T>(builder.GetAllSql<T>(returnFields, orderBy), null, tran, true, commandTimeout);

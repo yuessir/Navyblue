@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Threading.Tasks;
+using OfficeOpenXml.FormulaParsing.Excel.Functions.Text;
 
 namespace Rhema.Core.Infrastructure
 {
@@ -65,6 +67,9 @@ namespace Rhema.Core.Infrastructure
 
         #endregion
 
+        IQuery Criteria { get; set; }
 
+        string BuildConditions(bool includeWhere);
+        string BuildConditions<T>(Expression<Func<T, bool>> exp, bool includeWhere = true);
     }
 }

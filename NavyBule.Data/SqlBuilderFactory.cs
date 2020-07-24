@@ -10,7 +10,7 @@ namespace Rhema.Data
     internal class SqlBuilderFactory
     {
    
-        private static readonly ISqlBuilder Oracle = new OracleBuilder();
+        private static readonly ISqlBuilder Oracle = new OracleBuilder(new Query());
 
         public static ISqlBuilder GetBuilder(IDbConnection conn)
         {
