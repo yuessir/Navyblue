@@ -4,11 +4,11 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading;
-using Rhema.Core.Cache;
-using Rhema.Core.Domain;
-using Rhema.Core.Util;
+using NavyBule.Core.Cache;
+using NavyBule.Core.Domain;
+using NavyBule.Core.Util;
 
-namespace Rhema.Core.Infrastructure
+namespace NavyBule.Core.Infrastructure
 {
     public enum ConditionType
     {

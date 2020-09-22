@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
-using Rhema.Core.Domain;
+using NavyBule.Core.Domain;
 
-namespace Rhema.Data
+namespace NavyBule.Data
 {
     /// <summary>
     /// Interface IDapperRepository

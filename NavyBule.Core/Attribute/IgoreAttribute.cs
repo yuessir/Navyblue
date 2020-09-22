@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Rhema.Core.Attribute
+namespace NavyBule.Core.Attribute
 {
     /// <summary>
     /// 忽略列(非数据库字段)

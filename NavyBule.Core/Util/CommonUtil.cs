@@ -4,11 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Rhema.Core.Attribute;
-using Rhema.Core.Domain;
+using NavyBule.Core.Attribute;
+using NavyBule.Core.Domain;
 
 
-namespace Rhema.Core.Util
+namespace NavyBule.Core.Util
 {
     public class CommonUtilExt
     {
@@ -214,7 +214,7 @@ namespace Rhema.Core.Util
 
         public static TableEntity CreateTableEntity(Type t)
         {
-            var table = t.GetCustomAttributes(false).FirstOrDefault(f => f is Attribute.TableAttribute) as Rhema.Core.Attribute.TableAttribute;
+            var table = t.GetCustomAttributes(false).FirstOrDefault(f => f is Attribute.TableAttribute) as TableAttribute;
             if (table == null)
             {
                 throw new Exception("Class " + t.Name + " is not labeled [TableAttribute], please label it first");
@@ -241,7 +241,7 @@ namespace Rhema.Core.Util
                     {
                         string Name = item.Name;
                         model.AllFieldPropertiesList.Add(Name); //所有列(使用property name)
-                        var column = item.GetCustomAttributes(false).FirstOrDefault(f => f is Rhema.Core.Attribute.ColumnAttribute) as Rhema.Core.Attribute.ColumnAttribute;
+                        var column = item.GetCustomAttributes(false).FirstOrDefault(f => f is ColumnAttribute) as ColumnAttribute;
                         if (column != null)
                             Name = column.Name;
                         if (!Name.ToLower().Equals(model.KeyName.ToLower()))

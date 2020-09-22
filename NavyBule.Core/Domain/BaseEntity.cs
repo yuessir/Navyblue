@@ -1,4 +1,4 @@
-﻿namespace Rhema.Core.Domain
+﻿namespace NavyBule.Core.Domain
 {
     /// <summary>
     /// Class BaseEntity. If ORM is EF, I recommended to inherit the class. 

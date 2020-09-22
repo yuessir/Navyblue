@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.FileProviders;
 
-namespace Rhema.Core.Infrastructure
+namespace NavyBule.Core.Infrastructure
 {
     /// <summary>todo all method need asyncFunction 
     /// Class RmaFileProvider.

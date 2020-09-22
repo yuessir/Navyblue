@@ -10,12 +10,12 @@ using System.Threading.Tasks;
 using Dapper;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
-using Rhema.Core;
-using Rhema.Core.Domain;
-using Rhema.Core.Infrastructure;
-using Rhema.Data.Extensions;
+using NavyBule.Core;
+using NavyBule.Core.Domain;
+using NavyBule.Core.Infrastructure;
+using NavyBule.Data.Extensions;
 
-namespace Rhema.Data
+namespace NavyBule.Data
 {
     /// <summary>
     /// Class DapperRepositoryBase.

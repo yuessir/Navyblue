@@ -5,9 +5,9 @@ using System.Linq;
 using System.Threading.Tasks;
 using MimeKit;
 using MimeKit.Text;
-using Rhema.Core.Infrastructure;
+using NavyBule.Core.Infrastructure;
 
-namespace Rhema.Core.Messages
+namespace NavyBule.Core.Messages
 {
     /// <summary>
     /// Email sender

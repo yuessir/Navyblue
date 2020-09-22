@@ -7,10 +7,11 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace Rhema.Core.Infrastructure
+namespace NavyBule.Core.Infrastructure
 {
     public interface IEngine
     {
+        void ConfigureServiceProvider(IServiceProvider provider);
         /// <summary>
         /// Registers the dependencies.
         /// </summary>

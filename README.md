@@ -14,3 +14,7 @@ DapperExtensions : [https://github.com/znyet/DapperExtensions](https://github.co
 ERPConnect helper : [https://www.theobald-sftware.com/en/erpconnect/](https://www.theobald-sftware.com/en/erpconnect/)
 
 支援多資料庫/SAP ECC/S4HANA
+
+
+## demo project: ##
+DBMemThresholdMonitorTask folder

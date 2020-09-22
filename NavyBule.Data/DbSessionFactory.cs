@@ -5,11 +5,12 @@ using System.Data.SqlClient;
 using System.IO;
 using System.Text;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using Oracle.ManagedDataAccess.Client;
-using Rhema.Core.Domain;
+using NavyBule.Core.Domain;
 
-namespace Rhema.Data
+namespace NavyBule.Data
 {
 
 
@@ -18,6 +19,7 @@ namespace Rhema.Data
     /// </summary>
     public class DbSessionFactory
     {
+       
         //todo refactor
         private static IDbConnection CreateConnection(IConfiguration configuration, DatabaseType dataType = DatabaseType.Oracle, string connStrKey = "")
         {
@@ -45,8 +47,9 @@ namespace Rhema.Data
             }
             catch (Exception e)
             {
-          
-                throw e;
+                //new LoggerFactory().CreateLogger("app").Log(LogLevel.Error ,e.InnerException.ToString());
+                return null;
+                //throw e;
             }
             return conn;
         }

@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 using MailKit.Net.Smtp;
 using MailKit.Security;
 using Microsoft.Extensions.Logging;
-using Rhema.Core.Infrastructure;
+using NavyBule.Core.Infrastructure;
 
-namespace Rhema.Core.Messages
+namespace NavyBule.Core.Messages
 {
     /// <summary>
     /// SMTP Builder

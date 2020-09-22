@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using AutoMapper;
 using AutoMapper.Configuration;
 
-namespace Rhema.Core.Mapper
+namespace NavyBule.Core.Mapper
 {
     /// <summary>
     /// Class AutoMapperApiConfiguration.

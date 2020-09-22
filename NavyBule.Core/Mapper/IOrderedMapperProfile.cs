@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Rhema.Core.Mapper
+namespace NavyBule.Core.Mapper
 {
     public interface IOrderedMapperProfile
     {

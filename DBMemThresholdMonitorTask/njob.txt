@@ -1,0 +1,10 @@
+﻿;job1		SEC	15 /schedule/testPage.aspx
+;範例說明>>符號分號';'為註解,任務名稱(job1),排程模式(SEC),間隔時間(15),任務參數(/schedule/testPage.aspx)
+;排程模式SEC說明:每15秒執行job1任務,/schedule/testPage.aspx為運行時參數,若無參數請填入任意字串
+;排程模式RunOnWeek說明:每週一15:55:59執行jobNotifyAdminPwdexpired任務
+;排程模式RunOnDay說明:每天10點執行jobNotifypwdexpired任務
+;排程模式RunOnMonth說明:每月1號15:55:59執行job1任務
+
+;下面任務TPBPD名不能更改
+B2B SEC 30 24576
+

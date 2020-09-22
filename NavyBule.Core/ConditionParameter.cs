@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
-using Rhema.Core.Infrastructure;
+using NavyBule.Core.Infrastructure;
 
-namespace Rhema.Core
+namespace NavyBule.Core
 {
     public class ConditionParameter<T>: ConditionParameter
     {

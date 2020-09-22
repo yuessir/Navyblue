@@ -3,10 +3,10 @@ using System.Collections;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Reflection;
-using Rhema.Core.Domain;
-using Rhema.Core.Util;
+using NavyBule.Core.Domain;
+using NavyBule.Core.Util;
 
-namespace Rhema.Core.Cache
+namespace NavyBule.Core.Cache
 {
     internal class OracleCache
     {

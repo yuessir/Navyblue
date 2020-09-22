@@ -7,10 +7,10 @@ using System.Text;
 using System.Threading.Tasks;
 using ERPConnect;
 using Newtonsoft.Json;
-using Rhema.Core;
-using Rhema.Core.Infrastructure;
+using NavyBule.Core;
+using NavyBule.Core.Infrastructure;
 
-namespace Rhema.Data
+namespace NavyBule.Data
 {
     /// <summary>
     /// Class SapConn.

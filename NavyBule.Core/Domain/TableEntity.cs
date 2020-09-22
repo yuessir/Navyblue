@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Rhema.Core.Domain
+namespace NavyBule.Core.Domain
 {
     internal class TableEntity
     {

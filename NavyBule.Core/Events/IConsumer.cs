@@ -1,4 +1,4 @@
-﻿namespace Rhema.Core.Events
+﻿namespace NavyBule.Core.Events
 {
     /// <summary>
     /// Consumer interface

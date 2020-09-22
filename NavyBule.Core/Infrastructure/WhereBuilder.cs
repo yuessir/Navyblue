@@ -6,11 +6,11 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using System.Text;
-using Rhema.Core.Cache;
-using Rhema.Core.Domain;
-using Rhema.Core.Util;
+using NavyBule.Core.Cache;
+using NavyBule.Core.Domain;
+using NavyBule.Core.Util;
 
-namespace Rhema.Core.Infrastructure
+namespace NavyBule.Core.Infrastructure
 {
     //The class builder was modified from 
     //http://ryanohs.com/2016/04/generating-sql-from-expression-trees/

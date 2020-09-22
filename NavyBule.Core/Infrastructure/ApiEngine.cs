@@ -8,9 +8,9 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Rhema.Core.Infrastructure.DependencyManagement;
+using NavyBule.Core.Infrastructure.DependencyManagement;
 
-namespace Rhema.Core.Infrastructure
+namespace NavyBule.Core.Infrastructure
 {
     public class ApiEngine : IEngine
     {
@@ -54,6 +54,10 @@ namespace Rhema.Core.Infrastructure
         public virtual void ConfigureRequestPipeline(IApplicationBuilder application)
         {
             _serviceProvider = application.ApplicationServices;
+        }
+        public virtual void ConfigureServiceProvider(IServiceProvider provider)
+        {
+            _serviceProvider = provider;
         }
 
         public T Resolve<T>() where T : class

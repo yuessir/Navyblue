@@ -6,7 +6,7 @@ using System.Security.Cryptography.X509Certificates;
 using System.Threading.Tasks;
 using MailKit.Net.Smtp;
 
-namespace Rhema.Core.Messages
+namespace NavyBule.Core.Messages
 {
 
     /// <summary>

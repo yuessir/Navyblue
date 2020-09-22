@@ -2,7 +2,7 @@
 using System.Linq;
 using Microsoft.AspNetCore.Mvc.Rendering;
 
-namespace Rhema.Core.Service.ExportImport
+namespace NavyBule.Core.Service.ExportImport
 {
     /// <summary>
     /// A helper class to access the property by name

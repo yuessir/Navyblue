@@ -4,7 +4,7 @@ using System.Text;
 using Autofac;
 using Microsoft.Extensions.Configuration;
 
-namespace Rhema.Core.Infrastructure.DependencyManagement
+namespace NavyBule.Core.Infrastructure.DependencyManagement
 {
     /// <summary>
     /// Dependency registrar interface

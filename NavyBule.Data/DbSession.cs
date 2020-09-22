@@ -5,7 +5,7 @@ using System.Diagnostics.Contracts;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Rhema.Data
+namespace NavyBule.Data
 {
     public class DbSession : IDbSession
     {

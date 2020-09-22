@@ -1,4 +1,4 @@
-﻿namespace Rhema.Data
+﻿namespace NavyBule.Data
 {
     public interface IERPRepositoryBase
     {

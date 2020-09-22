@@ -5,11 +5,11 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Dapper;
-using Rhema.Core;
-using Rhema.Core.Infrastructure;
-using Rhema.Core.Util;
+using NavyBule.Core;
+using NavyBule.Core.Infrastructure;
+using NavyBule.Core.Util;
 
-namespace Rhema.Data.Extensions
+namespace NavyBule.Data.Extensions
 {
     public static partial class DapperExtension
     {
